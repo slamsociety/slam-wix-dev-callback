@@ -6,12 +6,12 @@
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Cache-Control" content="no-store">
 <title>Return to SLAM Society</title>
-<style>body{font:16px system-ui,sans-serif;margin:12vh auto;padding:0 20px;max-width:480px;line-height:1.5}button{border:0;padding:14px 20px;border-radius:6px;background:#d9364b;color:white;font:inherit;cursor:pointer}</style>
+<style>body{font:16px system-ui,sans-serif;margin:12vh auto;padding:0 20px;max-width:480px;line-height:1.5}#return{display:inline-block;border:0;padding:14px 20px;border-radius:6px;background:#d9364b;color:white;font:inherit;text-decoration:none;cursor:pointer}#return[hidden]{display:none}</style>
 </head>
 <body>
 <h1>Connect your SLAM account</h1>
 <p id="message" role="status">Checking your Wix sign-in…</p>
-<button id="return" type="button" hidden>Return to SLAM Society app</button>
+<a id="return" hidden>Return to SLAM Society app</a>
 <script>
 (() => {
   // Host over HTTPS and register the exact resulting URL in Wix Headless.
@@ -36,8 +36,8 @@
   appUrl.searchParams.set('code', code);
   appUrl.searchParams.set('state', state);
   status.textContent = 'Wix sign-in complete. Return to your SLAM app to finish connecting your account.';
+  button.href = appUrl.href;
   button.hidden = false;
-  button.addEventListener('click', () => { location.href = appUrl.href; }, { once: true });
 })();
 </script>
 </body>
